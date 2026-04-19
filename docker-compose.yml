@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: marmoraria_db
+    restart: always
+    environment:
+      POSTGRES_USER: user_marmoraria
+      POSTGRES_PASSWORD: password_marmoraria
+      POSTGRES_DB: marmoraria_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    container_name: marmoraria_adminer
+    restart: always
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:
